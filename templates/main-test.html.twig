@@ -1,0 +1,49 @@
+{%  extends 'base.html.twig'%}
+
+{% block body %}
+ <h1>test test</h1>
+<div>
+    <div>{{ "now"|date('Y') }}</div>
+    <div>{{ "now"|date('d-m-Y-H-i-s') }}</div>
+    <div>{{ "+3 year"|date('y') }}</div>
+    <div>{{ "yesterday"|date('d') }}</div>
+
+    {# crée une variable ! #}
+    {% set name ="Guillaume" %}
+    <h2>{{ name|upper }}</h2>
+
+    {# crée un tableau1 #}
+    {% set colors = ["Orange","Blue","Red","White"] %}
+    <div>nombre de couleurs要素の長さ確認 : {{ colors|length }}</div>
+    <div>パラの記号で要素を結合できる : {{ colors|join(' / ') }}</div>
+    {% for color in colors %}
+    　<div>インデックス番号を入れれる : {{ loop.index }}</div>
+      <div style="background-color:{{ color}}">{{ color }}<div>
+    {% endfor %}
+
+
+              {# crée un tableau2 #}
+              {% set colors = ["Orange","Blue","Red","White"] %}
+              <div>nombre de couleurs要素の長さ確認 : {{ colors|length }}</div>
+              <div>パラの記号で要素を結合できる : {{ colors|join(' / ') }}</div>
+              {% for color in colors %}
+              　<div>最初、最後ｍ何番目にインデックス番号を入れる : {{ loop.last }}</div>
+              <div style="background-color:{{ color}}">{{ color }}<div>
+                      {% endfor %}
+
+    {# un objet #}
+    {% set book ={
+        title:'PifPaf',
+        year: 2024,
+        autor: "John Doe"}
+    %}
+    <h3>{{ book.autor }}</h3>
+              <div>
+               {% for key, val in book %}
+                   <div>{{ key }} : {{ val }}</div>
+               {% endfor %}
+              </div>
+</div>
+                  {% endblock %}
+
+                  {% block title %}{{ parent() }} | Test page {%endblock%}
