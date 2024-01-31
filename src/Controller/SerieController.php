@@ -38,7 +38,7 @@ class SerieController extends AbstractController
     #[Route('/details/{id}', name: 'app_details')]
     public function detail(int $id, SerieRepository $serieRepository): Response
     {
-        //aller chercher les series en bdd
+        //aller chercher la series en bdd
         $serie = $serieRepository->find($id);
 
         if (!$serie){
